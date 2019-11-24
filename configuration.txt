@@ -44,4 +44,6 @@ redis-cli -h 192.168.16.104 -p 16380
 
 terus info sentinel
 
+FAILOVER
+
 redis-cli -h 192.168.16.102 -p 6380 debug segfault

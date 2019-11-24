@@ -5,8 +5,6 @@ sudo apt-get update -y
 
 sudo apt-get install redis -y
 
-sudo mkdir /etc/redis 
-
 sudo cp /vagrant/conf/redis_slave_1.conf /etc/redis/redis.conf
 sudo cp /vagrant/conf/redis_slave_1_sentinel.conf /etc/redis/sentinel.conf
 
