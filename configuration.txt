@@ -1,0 +1,47 @@
+redis server 3
+
+Server Redis:
+redis-master :
+OS: ubuntu-18.04
+RAM: 1024 MB
+IP: 192.168.16.102
+redis-slave-1 :
+OS: ubuntu-18.04
+RAM: 1024 MB
+IP: 192.168.16.103
+redis-slave-2 :
+OS: ubuntu-18.04
+RAM: 1024 MB
+IP: 192.168.16.104
+
+redis_master.sh
+redis_master.conf
+redis_master_sentinel.conf
+redis_slave_1.sh
+redis_slave_1.conf
+redis_slave_1_sentinel.conf
+redis_slave_2.sh
+redis_slave_2.conf
+redis_slave_2_sentinel.conf
+
+#Jalankan di masing-masing server
+sudo redis-server /etc/redis/redis.conf
+sudo redis-server /etc/redis/sentinel.conf --sentinel
+
+redis-cli -h 192.168.16.102 -p 16380 sentinel get-master-addr-by-name redis-cluster
+redis-cli -h 192.168.16.103 -p 16380 sentinel get-master-addr-by-name redis-cluster
+redis-cli -h 192.168.16.104 -p 16380 sentinel get-master-addr-by-name redis-cluster
+
+redis-cli -h 192.168.16.102 -p 6380
+redis-cli -h 192.168.16.103 -p 6380
+redis-cli -h 192.168.16.104 -p 6380
+
+terus info replication
+
+redis-cli -h 192.168.16.102 -p 16380
+redis-cli -h 192.168.16.103 -p 16380
+redis-cli -h 192.168.16.104 -p 16380
+
+terus info sentinel
+
+redis-cli -h 192.168.16.102 -p 6380 debug segfault
