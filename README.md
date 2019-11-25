@@ -258,7 +258,7 @@ define('WP_REDIS_SERVERS',[
 10. Uji coba dengan 302 koneksi redis disabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_302_disabled.jpg) <br />
 ## Kesimpulan
-Dilihat dari uji coba di atas, disimpulkan bahwa wordpress dengan plugin Redis Object Cache lebih lambat daripada tidak menggunakan plugin Redis Object Cache. Hal ini mungkin terjadi karena jumlah permintaan ke server redis lebih banyak dari pada jumlah permintaan ke mysql sehinga menyebabkan overheat pada server redis. Hal ini dapat diatasi dengan menambah ram pada server redis, di mana saat ini hanya menggunakan 1 GB RAM pada tiap server redis <br /> <br />
+Dilihat dari uji coba di atas, disimpulkan bahwa wordpress dengan plugin Redis Object Cache lebih lambat daripada tidak menggunakan plugin Redis Object Cache. Hal ini mungkin terjadi karena jumlah permintaan ke server redis lebih banyak dari pada jumlah permintaan ke mysql sehinga menyebabkan overheat pada server redis. Hal ini mungkin dapat diatasi dengan menambah RAM pada server redis, di mana saat ini hanya menggunakan 1 GB RAM pada tiap server redis <br /> <br />
 
 # FAILOVER
 1. Masuk ke salah satu server, kemudian jalankan <br />
