@@ -244,7 +244,7 @@ define('WP_REDIS_SERVERS',[
 	'tcp://192.168.16.104:16380',
 ]);
 ```
-4. Ubah tulisan INFO menjadi info pada /var/www/html/wp-content/plugins/redis-cache/includes/predis/src/Command/ServerInfo.php <br />
+4. Ubah tulisan INFO menjadi info pada `` wp-content\plugins\redis-cache\includes\predis\src\CommandServerInfo.php `` <br />
 5. Enable plugin, dan cek `` diagnostic `` <br />
 6. Uji coba dilakukan pada `` /redistesting/2019/11/24/hello-world/ `` <br />
 7. Uji coba dengan 50 koneksi redis enabled <br />
