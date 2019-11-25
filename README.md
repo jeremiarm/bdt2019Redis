@@ -234,6 +234,16 @@ redis-cli -h 192.168.16.104 -p 16380 sentinel get-master-addr-by-name redis-clus
 1. Install Jmeter terlebih dahulu dengan tutorial https://www.blazemeter.com/blog/how-get-started-jmeter-part-1-installation-test-plans/ <br />
 2. Web server menggunakan local dengan enable plugin dan disable plugin saat testing. <br />
 3. Instalasi wordpress pada xampp dapat diikuti tutorialnya pada https://www.fixrunner.com/wordpress-localhost-installation/ <br />
+tambahkan pada `` wp-config.php `` <br />
+```
+define('WP_REDIS_CLIENT', 'predis');
+define('WP_REDIS_SENTINEL', 'redis-cluster');
+define('WP_REDIS_SERVERS',[
+	'tcp://192.168.16.102:16380',
+	'tcp://192.168.16.103:16380',
+	'tcp://192.168.16.104:16380',
+]);
+```
 4. Uji coba dilakukan pada `` /redistesting/2019/11/24/hello-world/ `` <br />
 5. Uji coba dengan 50 koneksi redis enabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_50_enabled.jpg) <br />
