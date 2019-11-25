@@ -234,7 +234,7 @@ redis-cli -h 192.168.16.104 -p 16380 sentinel get-master-addr-by-name redis-clus
 1. Install Jmeter terlebih dahulu dengan tutorial https://www.blazemeter.com/blog/how-get-started-jmeter-part-1-installation-test-plans/ <br />
 2. Web server menggunakan local dengan enable plugin dan disable plugin saat testing. <br />
 3. Instalasi wordpress pada xampp dapat diikuti tutorialnya pada https://www.fixrunner.com/wordpress-localhost-installation/ <br />
-tambahkan pada `` wp-config.php `` <br />
+tambahkan kode di bawah pada `` wp-config.php `` <br />
 ```
 define('WP_REDIS_CLIENT', 'predis');
 define('WP_REDIS_SENTINEL', 'redis-cluster');
@@ -244,18 +244,20 @@ define('WP_REDIS_SERVERS',[
 	'tcp://192.168.16.104:16380',
 ]);
 ```
-4. Uji coba dilakukan pada `` /redistesting/2019/11/24/hello-world/ `` <br />
-5. Uji coba dengan 50 koneksi redis enabled <br />
+4. Ubah tulisan INFO menjadi info pada /var/www/html/wp-content/plugins/redis-cache/includes/predis/src/Command/ServerInfo.php <br />
+5. Enable plugin, dan cek `` diagnostic `` <br />
+6. Uji coba dilakukan pada `` /redistesting/2019/11/24/hello-world/ `` <br />
+7. Uji coba dengan 50 koneksi redis enabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_50_enabled.jpg) <br />
-6. Uji coba dengan 50 koneksi redis disabled <br />
+8. Uji coba dengan 50 koneksi redis disabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_50_disabled.jpg) <br />
-7. Uji coba dengan 202 koneksi redis enabled <br />
+9. Uji coba dengan 202 koneksi redis enabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_202_enabled.jpg) <br />
-8. Uji coba dengan 202 koneksi redis disabled <br />
+10. Uji coba dengan 202 koneksi redis disabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_202_disabled.jpg) <br />
-9. Uji coba dengan 302 koneksi redis enabled <br />
+11. Uji coba dengan 302 koneksi redis enabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_302_enabled.jpg) <br />
-10. Uji coba dengan 302 koneksi redis disabled <br />
+12. Uji coba dengan 302 koneksi redis disabled <br />
 ![alt text](https://github.com/jeremiarm/bdt2019Redis/blob/master/screenshot/jmeter_302_disabled.jpg) <br />
 ## Kesimpulan
 Dilihat dari uji coba di atas, disimpulkan bahwa wordpress dengan plugin Redis Object Cache lebih lambat daripada tidak menggunakan plugin Redis Object Cache. Hal ini mungkin terjadi karena jumlah permintaan ke server redis lebih banyak dari pada jumlah permintaan ke mysql sehinga menyebabkan overheat pada server redis. Hal ini mungkin dapat diatasi dengan menambah RAM pada server redis, di mana saat ini hanya menggunakan 1 GB RAM pada tiap server redis <br /> <br />
